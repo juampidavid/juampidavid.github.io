@@ -17,6 +17,7 @@
   --accent-hover: #33ddff;
 
   --shadow-light: rgba(0, 212, 255, 0.1);
+  --shadow-medium: rgba(0, 212, 255, 0.2);
   --shadow-dark: rgba(0, 0, 0, 0.5);
 
   --transition-fast: 0.15s ease-in-out;
@@ -24,7 +25,12 @@
   --transition-slow: 0.5s ease-in-out;
 
   --text-sm: 0.825rem;
+  --text-base: 1rem;
   --text-xl: 1.25rem;
+  --text-lg: 1.125rem;
+  --text-2xl: 1.5rem;
+  --text-4xl: 2.25rem;
+  --text-5xl: 3rem;
 
   --font-primary: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
     "Roboto", sans-serif;
@@ -35,9 +41,14 @@
   --spacing-xs: 0.25rem;
   --spacing-sm: 0.5rem;
   --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-2xl: 3rem;
   --spacing-xl: 2rem;
 
   --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+
+  --spacing-3xl: 4rem;
 
   --gradient-primary: linear-gradient(
     135deg,

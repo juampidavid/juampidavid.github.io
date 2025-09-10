@@ -1,1 +1,25 @@
-<p>hero works!</p>
+<section id="hero" class="hero section">
+  <div class="container">
+    <div class="hero__text animate-fade-up">
+      <h1>
+        Hola, soy
+        <span class="text-gradient">{{ "Juan Pablo" }}</span>
+      </h1>
+      <h2 class="hero__subtitle">{{ "Desarrollador Full Stack" }}</h2>
+      <p class="hero__description">
+        {{
+          "Desarrollador apasionado con experiencia en tecnologías web modernas. Me especializo en crear soluciones innovadoras y escalables que impacten positivamente en los usuarios."
+        }}
+      </p>
+      <div class="hero__actions">
+        <app-classic-button />
+        <app-classic-button />
+      </div>
+      <div class="hero__social">
+        <app-circle-button />
+        <app-circle-button />
+        <app-circle-button />
+      </div>
+    </div>
+  </div>
+</section>
