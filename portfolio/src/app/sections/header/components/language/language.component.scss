@@ -1,0 +1,147 @@
+@use "../../../../styles/variables.scss";
+
+.language-selector {
+  position: relative;
+  display: inline-block;
+}
+
+.language-toggle {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  background: var(--tertiary-bg);
+  border: 1px solid var(--border-secondary);
+  border-radius: var(--radius-md);
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  min-width: 65px;
+
+  &:hover {
+    background: var(--secondary-bg);
+    border-color: var(--accent-primary);
+  }
+
+  &.active {
+    border-color: var(--accent-primary);
+    box-shadow: 0 0 0 2px rgba(0, 212, 255, 0.1);
+  }
+
+  .current-language {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    font-size: var(--text-sm);
+    font-weight: var(--font-weight-medium);
+
+    .flag {
+      font-size: 16px;
+      line-height: 1;
+    }
+
+    .language-code {
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+    }
+  }
+
+  .chevron {
+    transition: transform var(--transition-fast);
+    color: var(--text-secondary);
+
+    &.rotated {
+      transform: rotate(180deg);
+    }
+  }
+}
+
+.language-dropdown {
+  position: absolute;
+  top: calc(100% + var(--spacing-xs));
+  left: 0;
+  right: 0;
+  background: var(--secondary-bg);
+  border: 1px solid var(--border-secondary);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-light);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all var(--transition-fast);
+  z-index: var(--z-dropdown);
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+
+  &.open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+}
+
+.language-option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: var(--spacing-sm);
+  background: none;
+  border: none;
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: background-color var(--transition-fast);
+  font-size: var(--text-sm);
+
+  &:hover {
+    background: var(--tertiary-bg);
+  }
+
+  &.selected {
+    background: rgba(0, 212, 255, 0.1);
+    color: var(--accent-primary);
+  }
+
+  .flag {
+    font-size: 16px;
+    margin-right: var(--spacing-xs);
+  }
+
+  .language-name {
+    flex: 1;
+    text-align: left;
+    text-transform: uppercase;
+    font-weight: var(language-dropdown);
+  }
+
+  .check-icon {
+    color: var(--accent-primary);
+    width: 14px;
+    height: 14px;
+  }
+}
+
+.language-option {
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(0, 212, 255, 0.1),
+      transparent
+    );
+    transition: left var(--transition-medium);
+  }
+
+  &:hover::before {
+    left: 100%;
+  }
+}

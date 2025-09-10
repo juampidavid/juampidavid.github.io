@@ -1,0 +1,19 @@
+<header class="header">
+  <nav class="nav container">
+    <div class="nav__brand">
+      <a class="brand-link" href="#home">
+        <span class="brand-text text-gradient">Portfolio</span>
+      </a>
+    </div>
+
+    <ul class="nav__menu">
+      @for (item of this.navigationItems(); track $index) {
+      <li>
+        <a class="nav__link" [href]="item.href">{{ item.title }}</a>
+      </li>
+      }
+    </ul>
+
+    <app-language />
+  </nav>
+</header>

@@ -1,0 +1,82 @@
+@use "../../styles/variables.scss";
+@use "../../styles/mixins.scss";
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: var(--z-fixed);
+  transition: all var(--transition-medium);
+  background: rgba(10, 10, 11, 0.9);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid transparent;
+
+  &.scrolled {
+    background: rgba(10, 10, 11, 0.95);
+    border-bottom-color: var(--border-primary);
+    box-shadow: 0 2px 20px var(--shadow-dark);
+  }
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 80px;
+
+  &__brand {
+    .brand-link {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+
+      .brand-text {
+        font-size: var(--text-xl);
+        font-weight: var(--font-weight-bold);
+        letter-spacing: -0.025em;
+      }
+    }
+  }
+
+  &__menu {
+    display: none;
+    list-style: none;
+    align-items: center;
+    gap: var(--spacing-xl);
+
+    @include mixins.respond-to(md) {
+      display: flex;
+    }
+  }
+
+  &__link {
+    color: var(--text-secondary);
+    font-weight: var(--font-weight-medium);
+    font-size: var(--text-sm);
+    transition: color var(--transition-fast);
+    position: relative;
+    padding: var(--spacing-sm) 0;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+
+    &:hover {
+      color: var(--text-primary);
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--gradient-primary);
+      transition: width var(--transition-medium);
+    }
+
+    &:hover::after {
+      width: 100%;
+    }
+  }
+}

@@ -1,0 +1,49 @@
+<div class="language-selector">
+  <button
+    class="language-toggle"
+    type="button"
+    (click)="toggleDropdown()"
+    (blur)="onBlur($event)"
+    [class.active]="isOpen()"
+  >
+    <span class="current-language">
+      <span class="language-code">{{ this.currentLanguage() }}</span>
+    </span>
+    <svg
+      class="chevron"
+      [class.rotated]="isOpen()"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="currentColor"
+    >
+      <path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" />
+    </svg>
+  </button>
+
+  <div class="language-dropdown" [class.open]="isOpen()">
+    @for (item of this.availableLanguages(); track $index) {
+    <button
+      class="language-option"
+      [class.selected]="this.currentLanguage() == item"
+      (click)="selectLanguage(item)"
+      type="button"
+    >
+      <span class="language-name">{{ item }}</span>
+      @if (this.currentLanguage() == item) {
+      <svg
+        class="check-icon"
+        width="16"
+        height="16"
+        viewBox="0 0 24 24"
+        fill="currentColor"
+      >
+        <path
+          d="M9,20.42L2.79,14.21L5.62,11.38L9,14.77L18.88,4.88L21.71,7.71L9,20.42Z"
+        />
+      </svg>
+      }
+    </button>
+    }
+  </div>
+</div>
