@@ -1,0 +1,128 @@
+@use "../../../styles/variables.scss";
+@use "../../../styles/mixins.scss";
+
+.skill__item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-lg) var(--spacing-md);
+  background: var(--gradient-card);
+  border: 1px solid var(--border-primary);
+  border-radius: var(--radius-lg);
+  text-align: center;
+  transition: all var(--transition-medium);
+  opacity: 0;
+  transform: translateY(30px) scale(0.9);
+  animation: skillFadeIn 0.6s ease-out forwards;
+  position: relative;
+  overflow: hidden;
+
+  &:hover {
+    border-color: var(--accent-primary);
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 10px 30px var(--shadow-medium);
+
+    .skill__name {
+      color: var(--accent-primary);
+    }
+
+    &::before {
+      opacity: 0.1;
+      transform: translateX(0);
+    }
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(0, 212, 255, 0.4),
+      transparent
+    );
+    transition: all var(--transition-slow);
+    opacity: 0;
+  }
+
+  .skill__name {
+    font-size: var(--text-sm);
+    font-weight: var(--font-weight-semibold);
+    color: var(--text-primary);
+    transition: color var(--transition-fast);
+    position: relative;
+    z-index: 1;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+
+    @include mixins.respond-to(md) {
+      font-size: var(--text-base);
+    }
+  }
+
+  // Different hover effects for variety
+  &:nth-child(5n + 1) {
+    &:hover {
+      background: linear-gradient(
+        135deg,
+        var(--secondary-bg) 0%,
+        rgba(0, 212, 255, 0.1) 100%
+      );
+    }
+  }
+
+  &:nth-child(5n + 2) {
+    &:hover {
+      background: linear-gradient(
+        45deg,
+        var(--secondary-bg) 0%,
+        rgba(0, 153, 204, 0.1) 100%
+      );
+    }
+  }
+
+  &:nth-child(5n + 3) {
+    &:hover {
+      background: linear-gradient(
+        225deg,
+        var(--secondary-bg) 0%,
+        rgba(0, 212, 255, 0.1) 100%
+      );
+    }
+  }
+
+  &:nth-child(5n + 4) {
+    &:hover {
+      background: linear-gradient(
+        315deg,
+        var(--secondary-bg) 0%,
+        rgba(0, 153, 204, 0.1) 100%
+      );
+    }
+  }
+
+  &:nth-child(5n + 5) {
+    &:hover {
+      background: linear-gradient(
+        180deg,
+        var(--secondary-bg) 0%,
+        rgba(0, 212, 255, 0.1) 100%
+      );
+    }
+  }
+}
+
+@keyframes skillFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}

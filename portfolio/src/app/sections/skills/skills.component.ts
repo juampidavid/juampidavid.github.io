@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { Subject, takeUntil } from 'rxjs';
+import { SkillCardComponent } from '../../shared/components/skill-card/skill-card.component';
 
 @Component({
   selector: 'app-skills',
-  imports: [],
+  imports: [SkillCardComponent],
   templateUrl: './skills.component.html',
   styleUrl: './skills.component.scss',
 })
