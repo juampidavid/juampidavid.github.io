@@ -1,5 +1,5 @@
 import { Component, inject, OnDestroy, OnInit, signal } from '@angular/core';
-import { LanguageComponent } from './components/language/language.component';
+import { LanguageComponent } from '../../shared/components/language/language.component';
 import { Subject, takeUntil } from 'rxjs';
 import { ConfigService } from '../../core/services/config.service';
 import { NavigationItem } from '../../core/models/navigationItem';

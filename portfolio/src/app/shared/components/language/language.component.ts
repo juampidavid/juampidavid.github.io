@@ -1,6 +1,6 @@
 import { Component, signal, inject, OnInit, OnDestroy } from '@angular/core';
 import { takeUntil } from 'rxjs/operators';
-import { ConfigService } from '../../../../core/services/config.service';
+import { ConfigService } from '../../../core/services/config.service';
 import { Subject } from 'rxjs';
 
 @Component({
