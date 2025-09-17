@@ -1,0 +1,63 @@
+@use "../../../styles/variables.scss";
+@use "../../../styles/mixins.scss";
+
+.contact__method {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-lg);
+  padding: var(--spacing-lg);
+  background: var(--gradient-card);
+  border: 1px solid var(--border-primary);
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  transition: all var(--transition-medium);
+
+  &:hover {
+    border-color: var(--accent-primary);
+    transform: translateX(10px);
+    box-shadow: 0 5px 20px var(--shadow-medium);
+
+    .method__icon {
+      background: var(--accent-primary);
+      color: var(--primary-bg);
+      transform: scale(1.1);
+    }
+  }
+
+  .method__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    background: var(--tertiary-bg);
+    color: var(--accent-primary);
+    border-radius: var(--radius-md);
+    transition: all var(--transition-medium);
+    flex-shrink: 0;
+
+    svg {
+      width: 24px;
+      height: 24px;
+    }
+  }
+
+  .method__info {
+    flex: 1;
+
+    .method__label {
+      font-size: var(--text-sm);
+      color: var(--text-muted);
+      font-weight: var(--font-weight-medium);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: var(--spacing-xs);
+    }
+
+    .method__value {
+      font-size: var(--text-base);
+      color: var(--text-primary);
+      font-weight: var(--font-weight-medium);
+    }
+  }
+}
