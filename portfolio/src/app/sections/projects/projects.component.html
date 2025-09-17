@@ -1,1 +1,23 @@
-<p>projects works!</p>
+<section id="projects" class="projects section">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title text-gradient">
+        {{ "Proyectos Destacados" }}
+      </h2>
+      <p class="section-subtitle">
+        {{ "Algunos de mis trabajos más representativos" }}
+      </p>
+    </div>
+
+    <div class="projects__grid">
+      <app-project-card />
+      <app-project-card />
+      <app-project-card />
+      <app-project-card />
+    </div>
+  </div>
+</section>
+
+@if(isModalOpen) {
+<app-project-modal />
+}

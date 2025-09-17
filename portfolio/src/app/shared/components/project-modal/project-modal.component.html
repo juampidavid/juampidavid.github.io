@@ -1,0 +1,90 @@
+<section class="modal" [class.active]="true">
+  <div class="modal__overlay"></div>
+  <div class="modal__content">
+    <button class="modal__close">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+        <path
+          d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z"
+        />
+      </svg>
+    </button>
+
+    <div class="modal__header">
+      <h2 class="modal__title">{{ "Plataforma E-commerce Avanzada" }}</h2>
+      <div class="modal__meta">
+        <span class="modal__category">{{ "Web Application" }}</span>
+        <span class="modal__year">{{ "2025" }}</span>
+      </div>
+    </div>
+
+    <div class="modal__body">
+      @if(gallery.length > 1) {
+      <div class="modal__media">
+        <div class="media__container">
+          <div class="media__main">
+            <img
+              [src]="gallery[0]"
+              alt="Here is a title"
+              class="media__image"
+            />
+            <div class="media__controls">
+              <button class="control__btn control__prev">
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M15.41,7.41L14,6L8,12L14,18L15.41,16.59L10.83,12L15.41,7.41Z"
+                  />
+                </svg>
+              </button>
+              <button class="control__btn control__next">
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M10,6L8.59,7.41L13.17,12L8.59,16.59L10,18L16,12L10,6Z"
+                  />
+                </svg>
+              </button>
+            </div>
+            <div class="media__thumbnails">
+              @for(item of this.gallery; track $index) {
+              <button class="thumbnail__btn" [class.active]="true">
+                <img [src]="item" alt="Thumbnail" />
+              </button>
+              }
+            </div>
+          </div>
+        </div>
+      </div>
+      }
+
+      <div class="modal__info">
+        <div class="info__section">
+          <h3>{{ "Descripcion" }}</h3>
+          <p>{{ "aca te explico la descripcion del proytecto" }}</p>
+        </div>
+
+        <div class="info__section">
+          <h3>{{ "Solucion" }}</h3>
+          <p>{{ "Aca te epxlico la solucion" }}</p>
+        </div>
+
+        <div class="info__section">
+          <h3>{{ "Tecnologias utilizadas" }}</h3>
+          <div class="tech__list">
+            @for (technology of technologies; track $index) {
+            <app-skill-tag />
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

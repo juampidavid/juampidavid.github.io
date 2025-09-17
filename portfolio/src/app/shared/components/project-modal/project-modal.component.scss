@@ -1,0 +1,423 @@
+@use "../../../styles/variables.scss";
+@use "../../../styles/mixins.scss";
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: var(--z-modal);
+  opacity: 0;
+  visibility: hidden;
+  transition: all var(--transition-medium);
+
+  &.active {
+    opacity: 1;
+    visibility: visible;
+
+    .modal__content {
+      transform: scale(1);
+
+      @include mixins.respond-to(md) {
+        transform: translate(-50%, -50%) scale(1);
+      }
+    }
+  }
+
+  &__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+  }
+
+  &__content {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: var(--secondary-bg);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch; // Smooth scrolling on iOS
+    transition: transform var(--transition-medium);
+    transform: scale(0.9);
+
+    // Better mobile viewport handling
+    @media screen and (max-height: 600px) {
+      height: 100vh;
+      top: 0;
+    }
+
+    @include mixins.respond-to(md) {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0.9);
+      width: 90%;
+      max-width: 1000px;
+      max-height: 90vh;
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--border-secondary);
+    }
+
+    @include mixins.respond-to(lg) {
+      width: 85%;
+      max-height: 85vh;
+    }
+  }
+
+  &__close {
+    position: fixed;
+    top: var(--spacing-md);
+    right: var(--spacing-md);
+    width: 44px;
+    height: 44px;
+    background: var(--tertiary-bg);
+    border: 1px solid var(--border-secondary);
+    border-radius: 50%;
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+
+    @include mixins.respond-to(md) {
+      position: absolute;
+      top: var(--spacing-lg);
+      right: var(--spacing-lg);
+      width: 40px;
+      height: 40px;
+      backdrop-filter: none;
+    }
+
+    &:hover {
+      background: var(--accent-primary);
+      color: var(--primary-bg);
+      transform: scale(1.1);
+    }
+
+    svg {
+      width: 24px;
+      height: 24px;
+
+      @include mixins.respond-to(md) {
+        width: 20px;
+        height: 20px;
+      }
+    }
+  }
+
+  &__header {
+    padding: var(--spacing-md) var(--spacing-lg);
+    border-bottom: 1px solid var(--border-primary);
+
+    // Extra padding for small screens
+    @media screen and (max-width: 480px) {
+      padding: var(--spacing-sm) var(--spacing-md);
+    }
+
+    @include mixins.respond-to(md) {
+      padding: var(--spacing-2xl);
+    }
+
+    .modal__title {
+      font-size: var(--text-xl);
+      color: var(--text-primary);
+      margin-bottom: var(--spacing-sm);
+      padding-right: var(--spacing-3xl); // Space for close button
+      line-height: 1.3;
+      word-wrap: break-word;
+
+      @media screen and (max-width: 480px) {
+        font-size: var(--text-lg);
+        padding-right: var(--spacing-2xl);
+      }
+
+      @include mixins.respond-to(md) {
+        font-size: var(--text-3xl);
+        padding-right: 0;
+        margin-bottom: var(--spacing-md);
+      }
+    }
+
+    .modal__meta {
+      display: flex;
+      gap: var(--spacing-md);
+      flex-wrap: wrap;
+
+      @include mixins.respond-to(md) {
+        gap: var(--spacing-lg);
+      }
+
+      .modal__category {
+        color: var(--accent-primary);
+        font-weight: var(--font-weight-medium);
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        font-size: var(--text-sm);
+      }
+
+      .modal__year {
+        color: var(--text-muted);
+        font-weight: var(--font-weight-medium);
+        font-size: var(--text-sm);
+      }
+    }
+  }
+
+  &__body {
+    padding: var(--spacing-md) var(--spacing-lg);
+
+    @media screen and (max-width: 480px) {
+      padding: var(--spacing-sm) var(--spacing-md);
+    }
+
+    @include mixins.respond-to(md) {
+      padding: var(--spacing-2xl);
+    }
+  }
+}
+
+.modal__media {
+  margin-bottom: var(--spacing-lg);
+
+  @include mixins.respond-to(md) {
+    margin-bottom: var(--spacing-2xl);
+  }
+
+  .media__container {
+    .media__main {
+      position: relative;
+      margin-bottom: var(--spacing-md);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+
+      @include mixins.respond-to(md) {
+        margin-bottom: var(--spacing-lg);
+      }
+
+      .media__image {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+        display: block;
+
+        @include mixins.respond-to(sm) {
+          height: 300px;
+        }
+
+        @include mixins.respond-to(md) {
+          height: 400px;
+        }
+
+        @include mixins.respond-to(lg) {
+          height: 500px;
+        }
+      }
+
+      .media__controls {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        padding: 0 var(--spacing-sm);
+
+        @include mixins.respond-to(md) {
+          padding: 0 var(--spacing-lg);
+        }
+
+        .control__btn {
+          width: 44px;
+          height: 44px;
+          background: rgba(0, 0, 0, 0.7);
+          backdrop-filter: blur(10px);
+          border: 1px solid rgba(255, 255, 255, 0.2);
+          border-radius: 50%;
+          color: var(--text-primary);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
+          transition: all var(--transition-fast);
+
+          @include mixins.respond-to(md) {
+            width: 50px;
+            height: 50px;
+          }
+
+          &:hover {
+            background: var(--accent-primary);
+            transform: scale(1.1);
+          }
+
+          svg {
+            width: 20px;
+            height: 20px;
+          }
+        }
+      }
+    }
+
+    .media__thumbnails {
+      display: flex;
+      gap: var(--spacing-xs);
+      flex-wrap: wrap;
+      overflow-x: auto;
+      padding-bottom: var(--spacing-xs);
+
+      @include mixins.respond-to(md) {
+        gap: var(--spacing-sm);
+        overflow-x: visible;
+        flex-wrap: wrap;
+      }
+
+      .thumbnail__btn {
+        width: 50px;
+        height: 38px;
+        border: 2px solid var(--border-secondary);
+        border-radius: var(--radius-md);
+        overflow: hidden;
+        cursor: pointer;
+        transition: border-color var(--transition-fast);
+        background: none;
+        padding: 0;
+        flex-shrink: 0;
+
+        // Better mobile touch target
+        @media screen and (max-width: 480px) {
+          width: 45px;
+          height: 34px;
+          border-width: 1px;
+        }
+
+        @include mixins.respond-to(md) {
+          width: 80px;
+          height: 60px;
+        }
+
+        &.active {
+          border-color: var(--accent-primary);
+        }
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+    }
+  }
+
+  .media__video {
+    position: relative;
+    padding-bottom: 56.25%; // 16:9 aspect ratio
+    height: 0;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    margin-bottom: var(--spacing-md);
+
+    @include mixins.respond-to(md) {
+      margin-bottom: var(--spacing-lg);
+    }
+
+    iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+
+.modal__info {
+  .info__section {
+    margin-bottom: var(--spacing-lg);
+
+    @media screen and (max-width: 480px) {
+      margin-bottom: var(--spacing-md);
+    }
+
+    @include mixins.respond-to(md) {
+      margin-bottom: var(--spacing-2xl);
+    }
+
+    h3 {
+      color: var(--text-primary);
+      font-size: var(--text-base);
+      font-weight: var(--font-weight-semibold);
+      margin-bottom: var(--spacing-xs);
+      line-height: 1.4;
+
+      @media screen and (max-width: 480px) {
+        font-size: var(--text-sm);
+      }
+
+      @include mixins.respond-to(md) {
+        font-size: var(--text-xl);
+        margin-bottom: var(--spacing-md);
+      }
+    }
+
+    p {
+      color: var(--text-secondary);
+      line-height: 1.6;
+      font-size: var(--text-xs);
+
+      @media screen and (max-width: 480px) {
+        line-height: 1.5;
+      }
+
+      @include mixins.respond-to(md) {
+        font-size: var(--text-base);
+        line-height: 1.7;
+      }
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+
+      li {
+        position: relative;
+        padding-left: var(--spacing-lg);
+        color: var(--text-secondary);
+        margin-bottom: var(--spacing-sm);
+        line-height: 1.6;
+        font-size: var(--text-sm);
+
+        @include mixins.respond-to(md) {
+          font-size: var(--text-base);
+        }
+
+        &:before {
+          content: "✓";
+          position: absolute;
+          left: 0;
+          color: var(--accent-primary);
+          font-weight: var(--font-weight-bold);
+        }
+      }
+    }
+
+    .tech__list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--spacing-xs);
+
+      @include mixins.respond-to(md) {
+        gap: var(--spacing-sm);
+      }
+    }
+  }
+}
