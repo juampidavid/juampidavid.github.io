@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { SkillTagComponent } from '../../../../shared/components/skill-tag/skill-tag.component';
+import { SkillTagComponent } from '../skill-tag/skill-tag.component';
 
 @Component({
   selector: 'app-experience-card',
