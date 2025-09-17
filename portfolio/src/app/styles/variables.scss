@@ -5,6 +5,7 @@
 
   --text-primary: #ffffff;
   --text-secondary: #b3b3b3;
+  --text-muted: #888888;
 
   --z-dropdown: 1000;
   --z-fixed: 1030;
@@ -36,6 +37,7 @@
     "Roboto", sans-serif;
 
   --font-weight-medium: 500;
+  --font-weight-semibold: 600;
   --font-weight-bold: 700;
 
   --spacing-xs: 0.25rem;
@@ -47,6 +49,7 @@
 
   --radius-md: 0.5rem;
   --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
 
   --spacing-3xl: 4rem;
 
@@ -54,5 +57,11 @@
     135deg,
     var(--accent-primary) 0%,
     var(--accent-secondary) 100%
+  );
+
+  --gradient-card: linear-gradient(
+    135deg,
+    var(--secondary-bg) 0%,
+    var(--tertiary-bg) 100%
   );
 }

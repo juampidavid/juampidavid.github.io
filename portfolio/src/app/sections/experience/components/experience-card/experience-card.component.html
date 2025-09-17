@@ -1,0 +1,22 @@
+<div class="experience__card" [style.animation-delay.s]="0.2">
+  <div class="card__content">
+    <div class="card__header">
+      <h3 class="card__title">{{ "Senior Full Stack Developer" }}</h3>
+      <div class="card__company">{{ "Tech Company" }}</div>
+      <div class="card__period">{{ "2021 - 2023" }}</div>
+    </div>
+
+    <p class="card__description">
+      {{
+        "Desarrollo de aplicaciones web escalables utilizando Angular, Node.js y tecnologías cloud. Liderazgo técnico en proyectos de alta complejidad."
+      }}
+    </p>
+
+    <div class="card__technologies">
+      <div class="tech__title">{{ "Tecnologías" }}</div>
+      <div class="tech__list">
+        <app-skill-tag />
+      </div>
+    </div>
+  </div>
+</div>

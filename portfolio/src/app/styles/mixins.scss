@@ -38,3 +38,16 @@ $breakpoint-2xl: 1536px;
   background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+
+@mixin card-base {
+  background: var(--gradient-card);
+  border: 1px solid var(--border-primary);
+  border-radius: var(--radius-xl);
+  transition: all var(--transition-medium);
+
+  &:hover {
+    border-color: var(--border-accent);
+    box-shadow: 0 10px 25px var(--shadow-medium);
+    transform: translateY(-5px);
+  }
+}
