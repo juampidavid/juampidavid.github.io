@@ -1,0 +1,24 @@
+<section class="testimonial__card">
+  <div class="testimonial__content">
+    <div class="testimonial__quote">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M14,17H17L19,13V7H13V13H16M6,17H9L11,13V7H5V13H8L6,17Z" />
+      </svg>
+    </div>
+    <p class="testimonial__text">
+      {{ "Este pibe es un genio laburando con Angular" }}
+    </p>
+    <div class="testimonial__author">
+      <div class="author__avatar">
+        <img [src]="image" alt="carlitos" loading="lazy" />
+      </div>
+      <div class="author__info">
+        <h4 class="author__name">{{ "Carlos Angular" }}</h4>
+        <div class="author__position">{{ "Capo" }}</div>
+        <div class="author__company">{{ "Google" }}</div>
+        <div class="author__relationship">{{ "Jefe" }}</div>
+      </div>
+      <app-circle-button></app-circle-button>
+    </div>
+  </div>
+</section>

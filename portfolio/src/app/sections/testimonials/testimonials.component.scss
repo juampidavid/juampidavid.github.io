@@ -1,0 +1,43 @@
+@use "../../styles/variables.scss";
+@use "../../styles/mixins.scss";
+
+.testimonials {
+  background: var(--primary-bg);
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: var(--spacing-3xl);
+
+  .section-title {
+    font-size: var(--text-4xl);
+    margin-bottom: var(--spacing-md);
+
+    @include mixins.respond-to(md) {
+      font-size: var(--text-5xl);
+    }
+  }
+
+  .section-subtitle {
+    font-size: var(--text-lg);
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0 auto;
+  }
+}
+
+.testimonials__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-2xl);
+
+  @include mixins.respond-to(md) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include mixins.respond-to(xl) {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+}
